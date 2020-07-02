@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro Pessoal</title>
+
+</head>
+<body>
+	<h1>Preenchimento de Dados</h1>
+
+	<form id="login" method="POST" action="">
+
+		<fieldset>
+			<legend>Nome,Email,Nascimento</legend>
+
+			Nome Completo: <input type="text" name="nome"><br>
+			<label for="email">E-mail para contato: </label>
+			<input type="email" name="email" id="email" required placeholder="zelele@dominio.com.br"><br>
+
+			<label for="nascimento">Data de nascimento: </label>
+			<input type="date" name="nascimento" id="nascimento">
+
+		</fieldset> <br>
+
+		<fieldset>
+			<legend>Informações adicionais</legend>
+
+			Região: <select name="regioes" id="regioes">
+				<option value="1">Norte</option>
+				<option value="2">Nordeste</option>
+				<option value="3">Sul</option>
+				<option value="4">Sudeste</option>
+				<option value="5">Centro-Oeste</option>
+			</select> <br>
+
+			cor favorita: <input type="color" name="cor"> <br>
+
+			</br>
+
+			<fieldset>
+				<legend>Linguagens utilizadas</legend>
+
+				<label for="java">Java</label>
+				<input type="checkbox" name="ling" id="java" value="java">
+
+				<label for="python">Python</label>
+				<input type="checkbox" name="ling" id="python" value="python">
+
+				<label for="c">C</label>
+				<input type="checkbox" name="ling" id="c" value="c">
+
+				<label for="cpp">C++</label>
+				<input type="checkbox" name="ling" id="cpp" value="cpp">
+
+				<label for="javascript">Javascript</label>
+				<input type="checkbox" name="ling" id="javascript" value="javascript">
+
+				<label for="haskell">Haskell</label>
+				<input type="checkbox" name="ling" id="haskell" value="haskell">
+
+			</fieldset>
+
+
+		</fieldset>
+		<br>
+
+		<fieldset>
+			<legend>Selecione o Curso</legend>
+
+			<input type="radio" name="curso" value="cc" id="cc">
+			<label for="cc">CIÊNCIA DA COMPUTAÇÃO</label><br>
+
+			<input type="radio" name="curso" value="es" id="es">
+			<label for="es">ENGENHARIA DE SOFTWARES</label><br>
+
+			<input type="radio" name="curso" value="ec" id="ec">
+			<label for="ec">ENGENHARIA DA COMPUTAÇÃO</label><br>
+
+			<label for="ano">Duração do curso</label>
+			<input type="number" name="ano" id="ano" min="2" max="6" step="1">
+
+		</fieldset>
+		<br>
+
+		<fieldset>
+			<legend>Submeter curriculo</legend>
+			<input type="file" name="cv">
+		</fieldset>
+		<br>
+
+		<fieldset>
+			<legend>Sua biografia</legend>
+			<textarea name="mensagem" rows="5" cols="50"></textarea>
+		</fieldset>
+
+		<br>
+		<input type="submit" name="submit" value="Submeter dados">
+		<input type="reset" value="Resetar dados">
+	</form>
+
+</body>
