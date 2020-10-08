@@ -1,38 +1,9 @@
-body{
-    background-image:url("eh_exercicio3.jpeg") ;
-}
-
-h1{
-    font-size: 22px;
-    color: blue;
-    text-align: center;
-
-}
-
-
-#paragrafo{
-    color: cornsilk;
-    font-size: large;
-    font-family: serif;
-    border: 5px solid blue;
-    background: black;
-    width: 660px;
-    height: 220px;
-    border-style: groove;
-    position: absolute;
-    left: 7%;
-    top: 20%;
-}
-
-#faixasM{
-    color: cornsilk;
-    font-size: large;
-    font-family: serif;
-    background: black;
-    border: 5px solid blue;
-    border-style: groove;
-    position:absolute;
-    right: 7%;
-    top: 20%;
-
+#p1{
+	background-color: #8080806b;
+	border: 15px solid black;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 60px;
+	border-bottom-right-radius: 16px;
+	font-family: serif; 
 }
