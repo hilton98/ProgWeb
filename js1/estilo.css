@@ -1,0 +1,22 @@
+body{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+table{
+	border: 2px solid;
+	text-align: center;
+	margin-right: 21px;
+	margin-top: 30px;
+	margin-left: 50px;
+ 
+}
+
+td {
+	width:80px; 
+  	border: 1px solid;
+  	border-left-width: 0;
+  	min-width: 70x;
+  	height: 20px;
+}
