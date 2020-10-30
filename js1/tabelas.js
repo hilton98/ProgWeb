@@ -1,5 +1,3 @@
-
-
 function geraTabela(){
 	tabelaFinal = "";
 
