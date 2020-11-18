@@ -1,0 +1,43 @@
+body{
+	width: 100vw;
+	height: 100vh;
+	background: #2F4F4F;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.reserva {
+  background-image: url('assets/reserva.png');
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  border: 5px solid #000;
+}
+
+.foco-incendio {
+  background-image: url('assets/foco.gif');
+  position: absolute;
+  z-index: 2;
+}
+
+.vidas {
+	background-image: url('assets/arvore.png');
+	display: block;
+	position: relative;
+}
+
+.pontuacao{
+	display: block;
+	position: relative;
+	font-size: 60px;
+	font-style: oblique;
+}
+
+.devastacao{
+	background-image: url('assets/devastacao.png');
+  	position: absolute;
+  	z-index: 3;
+}
