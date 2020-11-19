@@ -50,3 +50,9 @@ body{
 	position: absolute;
 	font-weight: bold;
 }
+
+.caveira{
+	background-image: url('assets/caveira.gif');
+  	position: absolute;
+  	z-index: 2;
+}

@@ -7,6 +7,7 @@
   let devastacaoDimensions = "160px";
   let vidaDimensions = [88,56];
   let focos = [];
+  let caveiras = [];
   let arvoresVida = [];
   let probFoco = 25;
   let score = 0;
@@ -14,17 +15,21 @@
   let gameLoop;
   let duracaoFogo;
 
+  function numeroIntAleatorio(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function brotarCaveira(){
+    let caveira = new Caveiras();
+    caveiras.push(caveira);
+    botarCaveiras = setTimeout(devastarCaveira, 2000/FPS);
+  }
+
   function cincoVidas(){
     for(i = 0; i < 5; i++){
     arvoresVida[i] = new Vidas();
-    }
-  }
-
-  function gameOver(){
-    if(arvoresVida.length > 1){
-      arvoresVida.pop().menosUm();
-    }else{
-      gameover = new GameOver();      
     }
   }
 
@@ -40,7 +45,23 @@
     pontuador[0].appendChild(document.createTextNode(scoreEstilizado+=scoreAtualTexto));
   }
 
-  function devastar(){
+  function devastarCaveira(){
+    if (caveiras.length > 0) {
+      var cav = caveiras.shift();
+      if ( cav.aceso ) {  
+        var topLeft = cav.coordenadasCav; 
+        var devastacao = new Devastacao();
+        cav.apagarCaveira();
+        devastacao.setarWidthHeight(topLeft[0],topLeft[1]);
+        cav.aceso = false;
+        cav.gameOver();
+        
+      }
+    }
+
+  }
+
+  function devastarFoguinho(){
     if (focos.length > 0) {
       var fogo = focos.shift();
       if (fogo.aceso ) {  
@@ -49,7 +70,7 @@
         fogo.apagarChama();
         devastacao.setarWidthHeight(topLeft[0],topLeft[1]);
         fogo.aceso = false;
-        gameOver();
+        fogo.gameOver();
         
       }
     }
@@ -59,7 +80,9 @@
     if (Math.random() * 100 < probFoco) {
       let foco = new FocoIncendio();
       focos.push(foco);
-      devastacao = setTimeout(devastar, 2000/FPS);
+      devastacao = setTimeout(devastarFoguinho, 2000/FPS);
+      botarCaveiras = setTimeout(brotarCaveira, 20000/(numeroIntAleatorio(1,4)));
+
     }
   }
 
@@ -67,13 +90,12 @@
     reserva = new Reserva();
   }
 
-
   window.addEventListener("keydown", function (e) {
     if (e.key === 'o') {
       clearInterval(gameLoop);
     }
     if(e.key === 's'){
-      gameLoop = setInterval(run, 1000/FPS);
+      gameLoop = setInterval(run, 1000/FPS );
   
     }
   })
@@ -97,7 +119,7 @@
       this.element.style.left = `${Math.floor((Math.random() * (gameDimensions[0]-focoDimensions[0])))}px`;
       this.element.style.top = `${Math.floor((Math.random() * (gameDimensions[1]-focoDimensions[1])))}px`;
       this.aceso = true;      
-      
+  
       this.element.addEventListener('mouseup',(e) => {  
         //e.toElement.remove(); NÃO FUNCIONA NO FIREFOX
         e.target.remove();
@@ -118,6 +140,13 @@
     apagarChama(){
       this.element.style.width = "0px";
       this.element.style.height = "0px";
+    }
+    gameOver(){
+      if(arvoresVida.length >= 1){
+        arvoresVida.pop().menosUm();
+      }else{
+        gameover = new GameOver();      
+      }
     }
   }
 
@@ -180,9 +209,51 @@
 
   }
 
+  class Caveiras{
+    constructor () {
+      this.element = document.createElement("div");
+      this.element.className = "caveira";
+      this.element.style.width = `${focoDimensions[0]}px`;
+      this.element.style.height = `${focoDimensions[1]}px`;
+      this.element.style.left = `${Math.floor((Math.random() * (gameDimensions[0]-focoDimensions[0])))}px`;
+      this.element.style.top = `${Math.floor((Math.random() * (gameDimensions[1]-focoDimensions[1])))}px`;
+      this.aceso = true;      
+      
+      this.element.addEventListener('mouseup',(e) => {  
+        //e.toElement.remove(); NÃO FUNCIONA NO FIREFOX
+        e.target.remove();
+        score+=20;
+        valorScore(score);
+        this.aceso = false;
 
+      });
+      reserva.element.appendChild(this.element);
+    }
+    get coordenadasCav(){
+      var coord = [];
+      coord.push(this.element.style.left);
+      coord.push(this.element.style.top);
+      return coord;
+    }
+
+    apagarCaveira(){
+      this.element.style.width = "0px";
+      this.element.style.height = "0px";
+    }
+
+    gameOver(){
+      if(arvoresVida.length >= 2){
+        arvoresVida.pop().menosUm();
+        arvoresVida.pop().menosUm();
+      }else{
+        gameover = new GameOver();
+      }
+    }
+  
+  }
 
   init();
-  cincoVidas()
+  cincoVidas();
   pontuacao = new Pontuacao();
+
 })();
