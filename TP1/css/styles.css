@@ -41,3 +41,12 @@ body{
   	position: absolute;
   	z-index: 3;
 }
+
+.gameOver{
+	font-size: 60px;
+	font-style: oblique;
+	color: #8B0000;
+	z-index: 3;
+	position: absolute;
+	font-weight: bold;
+}

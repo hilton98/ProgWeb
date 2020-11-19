@@ -2,15 +2,31 @@
 
   const FPS = 1; 
   let gameDimensions = [1243, 960];
+  let gameOverDimensions = [1000,16];
   let focoDimensions = [100, 130];
   let devastacaoDimensions = "160px";
   let vidaDimensions = [88,56];
   let focos = [];
+  let arvoresVida = [];
   let probFoco = 25;
   let score = 0;
   let reserva;
   let gameLoop;
   let duracaoFogo;
+
+  function cincoVidas(){
+    for(i = 0; i < 5; i++){
+    arvoresVida[i] = new Vidas();
+    }
+  }
+
+  function gameOver(){
+    if(arvoresVida.length > 1){
+      arvoresVida.pop().menosUm();
+    }else{
+      gameover = new GameOver();      
+    }
+  }
 
   function valorScore(scoreAtual){
     scoreAtualTexto = scoreAtual.toString();
@@ -33,6 +49,8 @@
         fogo.apagarChama();
         devastacao.setarWidthHeight(topLeft[0],topLeft[1]);
         fogo.aceso = false;
+        gameOver();
+        
       }
     }
   }
@@ -40,7 +58,6 @@
   function run () {
     if (Math.random() * 100 < probFoco) {
       let foco = new FocoIncendio();
-      console.log(foco.aceso);
       focos.push(foco);
       devastacao = setTimeout(devastar, 2000/FPS);
     }
@@ -112,8 +129,12 @@
       this.element.style.height = `${vidaDimensions[1]}px`;
       this.element.style.right = `${gameDimensions[0]}px`;
       this.element.style.bottom =`${gameDimensions[1]-440}px`;
-      document.body.appendChild(this.element);
+      document.body.appendChild(this.element);      
     }
+    menosUm(){
+      this.element.style.height = "0px";
+    }
+  
   }
 
   class Pontuacao{
@@ -145,13 +166,23 @@
 
   }
 
+  class GameOver{
+    constructor(){
+      this.element = document.createElement("div");
+      this.element.className = "gameOver";
+      this.element.style.width = `${gameOverDimensions[0]}px`;
+      this.element.style.height = `${gameOverDimensions[1]}px`;
+      this.element.style.right = "0px";
+      this.element.style.bottom =`${gameDimensions[1]-440}px`;
+      this.element.appendChild(document.createTextNode("GAME OVER, IRMÃO"));
+      reserva.element.appendChild(this.element);
+    }
+
+  }
+
 
 
   init();
-  vidas = new Vidas();
-  vidas1 = new Vidas();
-  vidas2 = new Vidas();
-  vidas3 = new Vidas();
-  vidas4 = new Vidas();
+  cincoVidas()
   pontuacao = new Pontuacao();
 })();
