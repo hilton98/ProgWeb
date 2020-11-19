@@ -25,20 +25,24 @@
   }
 
   function devastar(){
-    if(focos.length>0){
+    if (focos.length > 0) {
       var fogo = focos.shift();
-      var topLeft = fogo.coordenadas; 
-      var devastacao = new Devastacao();
-      fogo.apagarChama();
-      devastacao.setarWidthHeight(topLeft[0],topLeft[1]);
+      if (fogo.aceso ) {  
+        var topLeft = fogo.coordenadas; 
+        var devastacao = new Devastacao();
+        fogo.apagarChama();
+        devastacao.setarWidthHeight(topLeft[0],topLeft[1]);
+        fogo.aceso = false;
+      }
     }
   }
 
   function run () {
     if (Math.random() * 100 < probFoco) {
       let foco = new FocoIncendio();
+      console.log(foco.aceso);
       focos.push(foco);
-      devastacao = setInterval(devastar, 2000/FPS);
+      devastacao = setTimeout(devastar, 2000/FPS);
     }
   }
 
@@ -74,16 +78,20 @@
       this.element.style.width = `${focoDimensions[0]}px`;
       this.element.style.height = `${focoDimensions[1]}px`;
       this.element.style.left = `${Math.floor((Math.random() * (gameDimensions[0]-focoDimensions[0])))}px`;
-      this.element.style.top = `${Math.floor((Math.random() * (gameDimensions[1]-focoDimensions[1])))}px`;      
+      this.element.style.top = `${Math.floor((Math.random() * (gameDimensions[1]-focoDimensions[1])))}px`;
+      this.aceso = true;      
       
       this.element.addEventListener('mouseup',(e) => {  
         //e.toElement.remove(); NÃO FUNCIONA NO FIREFOX
         e.target.remove();
         score+=10;
         valorScore(score);
+        this.aceso = false;
+
       });
       reserva.element.appendChild(this.element);
     }
+
     get coordenadas(){
       var coord = [];
       coord.push(this.element.style.left);
