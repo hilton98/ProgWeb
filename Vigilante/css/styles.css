@@ -20,7 +20,7 @@ body{
 .foco-incendio {
   background-image: url('assets/foco.gif');
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 }
 
 .vidas {
@@ -39,7 +39,7 @@ body{
 .devastacao{
 	background-image: url('assets/devastacao.png');
   	position: absolute;
-  	z-index: 3;
+  	z-index: 2;
 }
 
 .gameOver{
