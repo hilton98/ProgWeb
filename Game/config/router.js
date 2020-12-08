@@ -1,8 +1,7 @@
 const express = require("express");
+const mainController = require("../app/controllers/main");
 const router = express.Router();
 
-router.get("/sobre", function (req, res){
-	res.render("index", { layout: false});
-})
+router.get("/sobre", mainController.sobre);
 
 module.exports = router;

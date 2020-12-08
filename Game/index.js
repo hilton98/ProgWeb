@@ -7,7 +7,7 @@ const app = express();
 
 app.engine("handlebars", handlebars());
 app.set("view engine","handlebars");
-app.set("views", `${__dirname}/views`);
+app.set("views", `${__dirname}/app/views`);
 
 
 app.use(logger("combined"));
