@@ -1,5 +1,9 @@
 function sobre(req, res){
-	res.render("index", { layout: false});
+	res.render("main/index");
 }
 
-module.exports = {sobre}
+function ui(req, res){
+	res.render("main/ui");
+}
+
+module.exports = {sobre,ui}
