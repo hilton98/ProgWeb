@@ -1,9 +1,17 @@
 function sobre(req, res){
-	res.render("main/index");
+	res.render("main/sobre");
 }
 
 function ui(req, res){
 	res.render("main/ui");
 }
 
-module.exports = {sobre,ui}
+function game(req, res){
+	res.render("main/jogo");
+}
+
+function index(req, res){
+	res.render("main/index");
+}
+
+module.exports = {sobre,ui,game,index}

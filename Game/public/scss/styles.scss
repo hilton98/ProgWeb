@@ -1,0 +1,65 @@
+//  body{
+//  	width: 100vw;
+//  	height: 100vh;
+//  	background: #2F4F4F;
+//  	display: flex;
+//  	flex-direction: row;
+//  	justify-content: center;
+//  	align-items: center;
+// }
+
+.reserva {
+  background-image: url('../img/reserva.png');
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  border: 5px solid #000;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.foco-incendio {
+  background-image: url('../img/foco.gif');
+  position: absolute;
+  z-index: 3;
+  background-size: cover;
+}
+
+.vidas {
+	background-image: url('../img/arvore.png');
+	display: block;
+	position: relative;
+}
+
+.pontuacao{
+	display: block;
+	position: relative;
+	font-size: 60px;
+	font-style: oblique;
+}
+
+.devastacao{
+	background-image: url('../img/devastacao.png');
+  	position: absolute;
+	z-index: 2;
+	background-size: cover;  
+}
+
+.gameOver{
+	font-size: 60px;
+	font-style: oblique;
+	color: #8B0000;
+	z-index: 3;
+	position: absolute;
+	font-weight: bold;
+	top: 40%;
+}
+
+.caveira{
+	background-image: url('../img/caveira.gif');
+  	position: absolute;
+	z-index: 2;
+	background-size: cover;
+
+}
