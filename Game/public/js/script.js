@@ -5,7 +5,7 @@
     let gameOverDimensions = [1000/2,16/2];
     let focoDimensions = [100/2, 130/2];
     let devastacaoDimensions = "80px";
-    let vidaDimensions = [88,56];
+    let vidaDimensions = [88/2,56/2];
     let focos = [];
     let caveiras = [];
     let arvoresVida = [];
@@ -222,7 +222,7 @@
         this.element.style.height = `${vidaDimensions[1]}px`;
         this.element.style.right = `${gameDimensions[0]}px`;
         this.element.style.bottom =`${gameDimensions[1]-440}px`;
-        document.getElementById("jogo").appendChild(this.element);      
+        document.getElementById("cabecaGame").appendChild(this.element);      
       }
       menosUm(){
         this.element.style.height = "0px";
@@ -235,10 +235,10 @@
         this.element.className = "pontuacao";
         this.element.style.width = `${vidaDimensions[0]}px`;
         this.element.style.height = `${vidaDimensions[1]}px`;
-        this.element.style.right = `${gameDimensions[0]-593}px`;
+        this.element.style.right = `${gameDimensions[0]-1171}px`;
         this.element.style.bottom =`${gameDimensions[1]-440}px`;
         this.element.appendChild(document.createTextNode("00000"));
-        document.getElementById("jogo").appendChild(this.element);
+        document.getElementById("cabecaGame").appendChild(this.element);
       }
   
     }

@@ -8,6 +8,12 @@
 //  	align-items: center;
 // }
 
+#cabecaGame{
+	display: block;
+	width: 620px;
+	height: 35px;
+}
+
 .reserva {
   background-image: url('../img/reserva.png');
   position: relative;
@@ -28,15 +34,18 @@
 
 .vidas {
 	background-image: url('../img/arvore.png');
-	display: block;
-	position: relative;
+	display: inline-block;
+	position: initial;
+	overflow: hidden;
+	background-size: cover;
 }
 
 .pontuacao{
 	display: block;
 	position: relative;
-	font-size: 60px;
+	font-size: 30px;
 	font-style: oblique;
+	background-size: cover;
 }
 
 .devastacao{
