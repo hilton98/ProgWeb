@@ -8,10 +8,21 @@
 //  	align-items: center;
 // }
 
+#jogo{
+  	display: flex;
+  	flex-direction: row;
+  	justify-content: center;
+  	align-items: center;
+
+}
+
 #cabecaGame{
 	display: block;
 	width: 620px;
 	height: 35px;
+	right: -230px; // andando pra direita
+	position: relative; //andando pra direita
+
 }
 
 .reserva {
