@@ -6,6 +6,12 @@ const sass = require("node-sass-middleware");
 
 const app = express();
 
+/*
+app.engine("handlebars", handlebars({
+	helpers: require(`${__dirname}/views/helpers/index`)
+}));
+*/
+
 app.engine("handlebars", handlebars());
 app.set("view engine","handlebars");
 app.set("views", `${__dirname}/app/views`);
@@ -19,6 +25,9 @@ app.use(sass({
 }));
 
 app.use(logger("combined"));
+
+app.use(express.urlencoded({extended: false}));
+
 app.use(router);
 
 app.use("/img", express.static(`${__dirname}/public/img`) );
